@@ -18,6 +18,7 @@
  * Email signup notification event handlers.
  *
  * @package    notifyemailsignup
+ * @author     Iñaki Arenaza
  * @copyright  2017 Iñaki Arenaza
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,16 +30,21 @@ defined('MOODLE_INTERNAL') || die();
  *
  * We try to keep everything in sync via listening to events,
  * it may fail sometimes, so we always do a full sync in cron too.
+ *
+ * @package    notifyemailsignup
+ * @copyright  2017 Iñaki Arenaza
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class notify_email_signup_handler {
     /**
      * Event processor - user created
+     *
      * @param \core\event\user_created $event
      * @return bool
      */
     public static function user_signup(\core\event\user_created $event) {
         global $DB, $CFG;
-        
+
         // Make sure the user was created through email signup plugin. Otherwise, ignore the event.
         $user = $DB->get_record('user', array('id' => $event->objectid));
         if($user->auth !== 'email') {
