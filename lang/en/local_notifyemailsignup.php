@@ -31,9 +31,9 @@ $string['notifyemailsignupbody'] = 'Hi {$a->supportname},
 A new account has been requested at \'{$a->sitename}\'
 using the following details:
 
-- email address: \'{$a->signupemail}\'
-- full name: \'{$a->signupfullname}\'
-- username: \'{$a->signupusername}\'
+- email address: {$a->signupemail}
+- full name: {$a->signupfullname}
+- username: {$a->signupusername}
 
 Cheers from the \'{$a->sitename}\' administrator,
 {$a->signoff}';
