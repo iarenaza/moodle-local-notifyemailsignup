@@ -17,7 +17,7 @@
 /**
  * Version details
  *
- * @package    notifyemailsignup
+ * @package    local_notifyemailsignup
  * @author     Iñaki Arenaza
  * @copyright  2017 Iñaki Arenaza
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017080300;                // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2014051200;                // Requires this Moodle version
+$plugin->version   = 2017080300;                // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires  = 2014051200;                // Requires this Moodle version.
 $plugin->maturity  = MATURITY_STABLE;           // This is considered ready for production sites.
-$plugin->release   = '1.0';                     // First stable version
-$plugin->component = 'local_notifyemailsignup'; // Full name of the plugin (used for diagnostics)
+$plugin->release   = '1.0';                     // First stable version.
+$plugin->component = 'local_notifyemailsignup'; // Full name of the plugin (used for diagnostics).

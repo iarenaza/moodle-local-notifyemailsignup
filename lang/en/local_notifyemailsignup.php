@@ -17,7 +17,7 @@
 /**
  * Strings for Email signup notification plugin, 'en' language
  *
- * @package    notifyemailsignup
+ * @package    local_notifyemailsignup
  * @author     Iñaki Arenaza
  * @copyright  2017 Iñaki Arenaza
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
