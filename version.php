@@ -27,6 +27,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2017080300;                // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2015111600;                // Requires this Moodle version
-$plugin->maturity  = MATURITY_BETA;             // This is considered ready for production sites.
+$plugin->maturity  = MATURITY_STABLE;           // This is considered ready for production sites.
 $plugin->relase    = '1.0';                     // First stable version
 $plugin->component = 'local_notifyemailsignup'; // Full name of the plugin (used for diagnostics)
