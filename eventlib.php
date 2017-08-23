@@ -51,17 +51,20 @@ class notify_email_signup_handler {
             return true;
         }
 
-        // It was, so send a notification email to the notification address(es), with user details.
+        // It was, so send a notification email to the notification address(es), withi the account details.
         $site = get_site();
         $supportuser = core_user::get_support_user();
 
-        $data = new stdClass();
-        $data->signupemail = $user->email;
-        $data->signupfullname = fullname($user);
-        $data->signupusername = $user->username;
-        $data->supportname = fullname($supportuser);
-        $data->sitename = format_string($site->fullname);
-        $data->signoff = generate_email_signoff();
+        // No need to send the password at all (even it it's encrypted).
+        $user->password = '++hidden for security reasons++';
+
+        $data = array();
+        foreach($user as $key=>$value) {
+            $data['signup_'.$key] = $value;
+        }
+        $data['supportname'] = fullname($supportuser);
+        $data['sitename'] = format_string($site->fullname);
+        $data['signoff'] = generate_email_signoff();
 
         $subject = get_string('notifyemailsignupsubject', 'local_notifyemailsignup', format_string($site->fullname));
         $message  = get_string('notifyemailsignupbody', 'local_notifyemailsignup', $data);

@@ -31,4 +31,8 @@ the recipient of the email notification messages it sends.
 
 You can customise the content/wording of the notification messages by
 editing the language strings of the plugin, e.g., through the built-in
-'Language customisation' mechanism.
+'Language customisation' mechanism. All the user table fields are
+available in the $a object as {$a->signup_*fieldname*}, where
+*fieldname* is one of ``id``, ``username``, ``auth``, ``firstname``,
+``lastname``, etc. The ``password`` field does not contain the actual
+password, for security reasons.
