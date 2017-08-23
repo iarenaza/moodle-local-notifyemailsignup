@@ -59,12 +59,22 @@ class notify_email_signup_handler {
         $user->password = '++hidden for security reasons++';
 
         $data = array();
-        foreach($user as $key=>$value) {
-            $data['signup_'.$key] = $value;
-        }
         $data['supportname'] = fullname($supportuser);
         $data['sitename'] = format_string($site->fullname);
         $data['signoff'] = generate_email_signoff();
+
+        // Add the user table fields.
+        foreach($user as $key=>$value) {
+            $data['signup_user_'.$key] = $value;
+        }
+
+        // Add the custom profile fields too.
+        $user->profile = array();
+        require_once($CFG->dirroot.'/user/profile/lib.php');
+        profile_load_custom_fields($user);
+        foreach($user->profile as $key=>$value) {
+            $data['signup_profile_'.$key] = $value;
+        }
 
         $subject = get_string('notifyemailsignupsubject', 'local_notifyemailsignup', format_string($site->fullname));
         $message  = get_string('notifyemailsignupbody', 'local_notifyemailsignup', $data);
