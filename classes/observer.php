@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Email signup notification event handlers.
+ * Email signup notification event observers.
  *
  * @package    local_notifyemailsignup
  * @author     Iñaki Arenaza
@@ -26,16 +26,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Event handler for cohort enrolment plugin.
- *
- * We try to keep everything in sync via listening to events,
- * it may fail sometimes, so we always do a full sync in cron too.
+ * Email signup notification event observers.
  *
  * @package    local_notifyemailsignup
  * @copyright  2017 Iñaki Arenaza
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class notify_email_signup_handler {
+
+class local_notifyemailsignup_observer {
     /**
      * Event processor - user created
      *
