@@ -28,7 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 $observers = array(
     array(
         'eventname' => '\core\event\user_created',
-        'callback' => 'notify_email_signup_handler::user_signup',
-        'includefile' => '/local/notifyemailsignup/eventlib.php'
+        'callback' => 'local_notifyemailsignup_observer::user_signup',
     ),
 );
