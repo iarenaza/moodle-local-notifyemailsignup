@@ -29,10 +29,10 @@ defined('MOODLE_INTERNAL') || die();
  * Email signup notification event observers.
  *
  * @package    local_notifyemailsignup
+ * @author     Iñaki Arenaza
  * @copyright  2017 Iñaki Arenaza
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class local_notifyemailsignup_observer {
     /**
      * Event processor - user created
@@ -62,7 +62,7 @@ class local_notifyemailsignup_observer {
         $data['signoff'] = generate_email_signoff();
 
         // Add the user table fields.
-        foreach($user as $key=>$value) {
+        foreach ($user as $key => $value) {
             $data['signup_user_'.$key] = $value;
         }
 
@@ -70,7 +70,7 @@ class local_notifyemailsignup_observer {
         $user->profile = array();
         require_once($CFG->dirroot.'/user/profile/lib.php');
         profile_load_custom_fields($user);
-        foreach($user->profile as $key=>$value) {
+        foreach ($user->profile as $key => $value) {
             $data['signup_profile_'.$key] = $value;
         }
 
