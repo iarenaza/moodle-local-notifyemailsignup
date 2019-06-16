@@ -43,9 +43,10 @@ class local_notifyemailsignup_observer {
     public static function user_signup(\core\event\user_created $event) {
         global $DB, $CFG;
 
-        // Make sure the user was created through email signup plugin. Otherwise, ignore the event.
+        // Make sure the user was created through one of the monitored signup plugins. Otherwise, ignore the event.
         $user = $DB->get_record('user', array('id' => $event->objectid));
-        if ($user->auth !== 'email') {
+        $monitoredauths = explode(',', get_config('local_notifyemailsignup', 'monitoredauths'));
+        if (!in_array($user->auth, $monitoredauths)) {
             return true;
         }
 
