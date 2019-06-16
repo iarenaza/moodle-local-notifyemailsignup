@@ -25,6 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$string['monitoredauths'] = 'Auth plugins to monitor';
+$string['monitoredauths_desc'] = 'Select the authentication plugins that you want to monitor for new self registration signups. Only installed plugins that are configured to allow signups are listed. They are listed even if they are not enabled.';
 $string['notifyemailsignupsubject'] = '{$a}: New account signup notification';
 $string['notifyemailsignupbody'] = 'Hi {$a->supportname},
 
@@ -38,4 +40,12 @@ using the following details:
 
 Cheers from the \'{$a->sitename}\' administrator,
 {$a->signoff}';
-$string['pluginname'] = 'Notify site administrators about new Email Signups';
+$string['pluginname'] = 'Notify site administrators about new self registration signups';
+
+$string['privacy:metadata:externalpurpose'] = 'This information is sent to an external SMTP server to be ultimately delivered as an email to the recipient.';
+$string['privacy:metadata:fullmessage'] = 'The message containing the new self signed up user details (may include custom user field details).';
+$string['privacy:metadata:fullmessagehtml'] = 'The message containing the new self signed up user details (may include custom user fields details).';
+$string['privacy:metadata:recipient'] = 'The configured support user.';
+$string['privacy:metadata:replyto'] = 'The email address of the configured support user.';
+$string['privacy:metadata:replytoname'] = 'The name of the configured support user.';
+$string['privacy:metadata:userfrom'] = 'The configured support user.';
