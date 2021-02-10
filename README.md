@@ -12,7 +12,9 @@ never be confirmed.
 
 ## Supported Moodle Versions ##
 
-The plugin currently works with Moodle 2.7 or later versions.
+Versions of the plugin up to 1.0.2 works with Moodle 2.7 or later
+versions. Versions of the plugin from 2.0.0-gdpr-3.6+ onwards only
+work with Moodle 3.6 or later.
 
 ## Installation ##
 
