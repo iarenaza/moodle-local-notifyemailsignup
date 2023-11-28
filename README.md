@@ -13,7 +13,7 @@ never be confirmed.
 ## Supported Moodle Versions ##
 
 Versions of the plugin up to 1.0.2 works with Moodle 2.7 or later
-versions. Versions of the plugin from 2.0.0-gdpr-3.6+ onwards only
+versions. Versions of the plugin from 2.0.0-gdpr-3.6+ onward only
 work with Moodle 3.6 or later.
 
 ## Installation ##
@@ -27,9 +27,17 @@ directory.
 
 ## Configuration ##
 
-The only configuration used by the plugin is the Support Contact
-settings. It uses the 'Support name' and 'Support email' settings as
-the recipient of the email notification messages it sends.
+The plugin has only one configuration setting: the set of
+authentication plugins that will be monitored to detect user
+signups. Bear in mind that only those authentication plugins that
+allow user signups ('Email signup' and 'LDAP' are the only ones in
+Moodle core), **and** are enabled in the Moodle site, will be
+available for selection.
+
+The only other configuration used by the plugin is the Support Contact
+settings. It uses the standard 'Support name' and 'Support email'
+Moodle settings as the recipient of the email notification messages it
+sends.
 
 You can customise the content/wording of the notification messages by
 editing the language strings of the plugin, e.g., through the built-in
