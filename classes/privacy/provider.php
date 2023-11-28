@@ -22,10 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_notifyemailsignup\privacy;
-
-defined('MOODLE_INTERNAL') || die();
-
 use \core_privacy\local\metadata\collection;
 use \core_privacy\local\request\contextlist;
 use \core_privacy\local\request\approved_contextlist;
@@ -63,10 +59,12 @@ class provider implements
     }
 
     /**
-     * Get the list of contexts that contain user information for the specified user.
+     * Get the list of contexts that contain user information for the
+     * specified user.
      *
      * @param   int         $userid     The user to search.
-     * @return  contextlist $contextlist  The contextlist containing the list of contexts used in this plugin.
+     * @return  contextlist $contextlist  The contextlist containing the list of
+     *                                    contexts used in this plugin.
      */
     public static function get_contexts_for_userid(int $userid) : contextlist {
         $contextlist = new contextlist();
@@ -76,7 +74,8 @@ class provider implements
     /**
      * Get the list of users who have data within a context.
      *
-     * @param   userlist    $userlist   The userlist containing the list of users who have data in this context/plugin combination.
+     * @param userlist $userlist The userlist containing the list of users who
+     *                           have data in this context/plugin combination.
      */
     public static function get_users_in_context(userlist $userlist) {
     }
@@ -84,7 +83,8 @@ class provider implements
     /**
      * Export all user data for the specified user, in the specified contexts.
      *
-     * @param approved_contextlist $contextlist The approved contexts to export information for.
+     * @param approved_contextlist $contextlist The approved contexts to export
+     *                                          information for.
      */
     public static function export_user_data(approved_contextlist $contextlist) {
     }
@@ -100,7 +100,8 @@ class provider implements
     /**
      * Delete multiple users within a single context.
      *
-     * @param   approved_userlist       $userlist The approved context and user information to delete information for.
+     * @param approved_userlist $userlist The approved context and user
+     *                                    information to delete information for.
      */
     public static function delete_data_for_users(approved_userlist $userlist) {
     }
@@ -108,7 +109,9 @@ class provider implements
     /**
      * Delete all user data for the specified user, in the specified contexts.
      *
-     * @param   approved_contextlist    $contextlist    The approved contexts and user information to delete information for.
+     * @param approved_contextlist $contextlist The approved contexts and user
+     *                                          information to delete
+     *                                          information for.
      */
     public static function delete_data_for_user(approved_contextlist $contextlist) {
     }

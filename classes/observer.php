@@ -23,8 +23,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Email signup notification event observers.
  *
@@ -43,18 +41,21 @@ class local_notifyemailsignup_observer {
     public static function user_signup(\core\event\user_created $event) {
         global $DB, $CFG;
 
-        // Make sure the user was created through one of the monitored signup plugins. Otherwise, ignore the event.
+        // Make sure the user was created through one of the monitored
+        // signup plugins. Otherwise, ignore the event.
         $user = $DB->get_record('user', array('id' => $event->objectid));
-        $monitoredauths = explode(',', get_config('local_notifyemailsignup', 'monitoredauths'));
+        $monitoredauths = explode(',', get_config('local_notifyemailsignup',
+                                                  'monitoredauths'));
         if (!in_array($user->auth, $monitoredauths)) {
             return true;
         }
 
-        // It was, so send a notification email to the notification address(es), withi the account details.
+        // It was, so send a notification email to the notification
+        // address(es), with the account details.
         $site = get_site();
         $supportuser = core_user::get_support_user();
 
-        // No need to send the password at all (even it it's encrypted).
+        // No need to send the password at all (even if it's encrypted).
         $user->password = '++hidden for security reasons++';
 
         $data = array();
@@ -75,14 +76,19 @@ class local_notifyemailsignup_observer {
             $data['signup_profile_'.$key] = $value;
         }
 
-        $subject = get_string('notifyemailsignupsubject', 'local_notifyemailsignup', format_string($site->fullname));
-        $message  = get_string('notifyemailsignupbody', 'local_notifyemailsignup', $data);
+        $subject = get_string('notifyemailsignupsubject',
+                              'local_notifyemailsignup',
+                              format_string($site->fullname));
+        $message  = get_string('notifyemailsignupbody',
+                               'local_notifyemailsignup', $data);
         $messagehtml = text_to_html($message, false, false, true);
 
         $supportuser->mailformat = 1; // Always send HTML version as well.
 
-        // Directly email rather than using the messaging system to ensure its not routed to a popup or jabber.
-        return email_to_user($supportuser, $supportuser, $subject, $message, $messagehtml);
+        // Directly email rather than using the messaging system to
+        // ensure its not routed to a popup or jabber.
+        return email_to_user($supportuser, $supportuser, $subject,
+                             $message, $messagehtml);
 
         return true;
     }

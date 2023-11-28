@@ -27,10 +27,12 @@ defined('MOODLE_INTERNAL') || die();
 
 // Ensure the configurations for this site are set.
 if ($hassiteconfig) {
-    // Create the new settings page
-    // - in a local plugin this is not defined as standard, so normal $settings->methods will throw an error as
-    // $settings will be NULL.
-    $settings = new admin_settingpage('local_notifyemailsignup', get_string('pluginname', 'local_notifyemailsignup'));
+    // Create the new settings page - in a local plugin this is not
+    // defined as standard, so normal $settings->methods will throw an
+    // error as $settings will be NULL.
+    $settings = new admin_settingpage(
+        'local_notifyemailsignup',
+        get_string('pluginname', 'local_notifyemailsignup'));
 
     // Create the settings page itself.
     $ADMIN->add('localplugins', $settings);
@@ -40,7 +42,7 @@ if ($hassiteconfig) {
         $plugins = core_component::get_plugin_list('auth');
         foreach ($plugins as $name => $fulldir) {
             $plugin = get_auth_plugin($name);
-            if (!$plugin or !($plugin->can_signup())) {
+            if (!$plugin || !($plugin->can_signup())) {
                 continue;
             }
             $options[$name] = get_string('pluginname', 'auth_'.$name);
@@ -49,9 +51,11 @@ if ($hassiteconfig) {
     };
 
     // Add setting fields to the settings for this page.
-    $settings->add(new admin_setting_configmulticheckbox('local_notifyemailsignup/monitoredauths',
-        get_string('monitoredauths', 'local_notifyemailsignup'),
-        get_string('monitoredauths_desc', 'local_notifyemailsignup'),
-        array('email' => 1), $signupplugins()));
+    $settings->add(
+        new admin_setting_configmulticheckbox(
+            'local_notifyemailsignup/monitoredauths',
+            get_string('monitoredauths', 'local_notifyemailsignup'),
+            get_string('monitoredauths_desc', 'local_notifyemailsignup'),
+            array('email' => 1), $signupplugins()));
     unset($signupplugins);
 }
